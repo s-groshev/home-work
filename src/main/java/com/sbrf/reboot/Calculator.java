@@ -1,22 +1,23 @@
 package com.sbrf.reboot;
 
 public class Calculator {
-    public double add(double a,double b){
+    public double getAddition(double a,double b){
         return  a+b;
     }
-    public double sub(double a,double b){
+    public double getSubtraction(double a,double b){
         return  a-b;
     }
-    public  double mul(double a,double b){
+    public  double getMultiplication(double a,double b){
         return  a*b;
     }
-    public double div(double a,double b){
+    public double getDivision(double a,double b){
         return  a/b;
     }
-    public double abs(double a){
+    public double getAbs(double a){
         return Math.abs(a);
     }
-    public double pow(double a,double b){
+    public double getPow(double a,double b){
         return Math.pow(a,b);
     }
+    public double getSin(double a){return  Math.sin(a);}
 }
