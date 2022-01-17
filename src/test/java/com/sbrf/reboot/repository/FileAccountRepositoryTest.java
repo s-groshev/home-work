@@ -33,7 +33,7 @@ class FileAccountRepositoryTest {
     }
 
     @Test
-    void failGetAllAccountsByClientId() {
+    void failGetAllAccountsByClientId() throws FileNotFoundException {
         long clientId = 1L;
 
         String filePath = "somePath";
