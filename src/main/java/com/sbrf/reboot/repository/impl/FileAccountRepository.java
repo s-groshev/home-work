@@ -1,7 +1,6 @@
 package com.sbrf.reboot.repository.impl;
 
 import com.sbrf.reboot.repository.AccountRepository;
-import lombok.NonNull;
 import lombok.SneakyThrows;
 
 import java.io.*;
@@ -27,10 +26,10 @@ public class FileAccountRepository implements AccountRepository {
         File f=new File(path);
         if(!f.exists()) throw new FileNotFoundException();
         return clientIdToAccounts.get(clientId);
-    };
+    }
     public void setAllAccountsByClientId(long clientId, Set<Long> contracts){
         throw new UnsupportedOperationException();
-    };
+    }
 
     public String read(){
         StringBuilder sb=new StringBuilder();
