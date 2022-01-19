@@ -1,5 +1,7 @@
 package com.sbrf.reboot.atm.cassettes;
 
+import com.sbrf.reboot.atm.banknote.Banknote;
+import com.sbrf.reboot.atm.cassets.Cassette;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -22,7 +24,6 @@ class CassetteTest {
 //            add(new OneThousand()); //it will not compile
 //            add(new Banknote()); //it will not compile
         }});
-
         Assertions.assertEquals(1, cassette.getCountBanknotes());
     }
 }
