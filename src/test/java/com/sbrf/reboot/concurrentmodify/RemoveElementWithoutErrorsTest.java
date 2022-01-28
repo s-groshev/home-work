@@ -29,45 +29,47 @@ public class RemoveElementWithoutErrorsTest {
     }
 
     @Test
-    public void successRemoveElementWithoutErrors() {
-        List<Integer> list=new ArrayList<>(Arrays.asList(-1,2,3,4,5));
+    public void successRemoveElementWithoutErrorsVer1() {
+        List<Integer> list = new ArrayList<>(Arrays.asList(-1, 2, 3, 4, 5));
 
         //перебор и удаление по индексу
-        assertDoesNotThrow(()->{
+        assertDoesNotThrow(() -> {
 
-            for (int i = 0; i <list.size(); i++) {
-                if(list.get(i)>0) {
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i) > 0) {
                     list.remove(i);
                     i--;//нужно следить что при каждом удалении правая часть массива сдвигается влево
                 }
             }
 
         });
-        System.out.println(list);
+    }
 
-        list.clear();
-        list.addAll(Arrays.asList(-1,2,3,4,5));
+    @Test
+    public void successRemoveElementWithoutErrorsVer2() {
+        List<Integer> list = new ArrayList<>(Arrays.asList(-1, 2, 3, 4, 5));
+
         //перебор и удаление с помощью итератора
-        assertDoesNotThrow(()->{
+        assertDoesNotThrow(() -> {
 
-            Iterator<Integer> iterator=list.iterator();
+            Iterator<Integer> iterator = list.iterator();
             while (iterator.hasNext()) {
-                if(iterator.next()>0)
+                if (iterator.next() > 0)
                     iterator.remove();
             }
 
         });
-        System.out.println(list);
+    }
 
-        list.clear();
-        list.addAll(Arrays.asList(-1,2,3,4,5));
+    @Test
+    public void successRemoveElementWithoutErrorsVer3() {
+        List<Integer> list = new ArrayList<>(Arrays.asList(-1, 2, 3, 4, 5));
+
         //перебор и удаление методом removeif
         assertDoesNotThrow(()->{
 
-            list.removeIf(e->e>0);
+            list.removeIf(i->i>0);
 
         });
-        System.out.println(list);
     }
-
 }
