@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CustomerH2RepositoryTest {
@@ -33,5 +34,15 @@ class CustomerH2RepositoryTest {
         boolean mariaCreated = customerRepository.createCustomer("Maria", "maria98@ya.ru");
 
         assertTrue(mariaCreated);
+    }
+
+    @Test
+    void createDuplicateCustomer() {
+
+        boolean seregaCreated1 = customerRepository.createCustomer("Serega", "Serega@mail.ru");
+
+        boolean seregaCreated2 = customerRepository.createCustomer("Serega", "Serega@mail.ru");
+
+        assertFalse(seregaCreated2);
     }
 }
