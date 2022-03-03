@@ -53,23 +53,20 @@ public class CustomerH2Repository implements CustomerRepository {
 
     @SneakyThrows
     public void executeUpdate(String update){
-        Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
-        Statement stmt=conn.createStatement();
-        stmt.executeUpdate(update);
-        stmt.close();
-        conn.close();
+        try(Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
+            Statement stmt=conn.createStatement()) {
+            stmt.executeUpdate(update);
+        }
     }
 
     @SneakyThrows
     public <T> T executeQuery(String query, ResultHandler<T> handler){
-        Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
-        Statement stmt=conn.createStatement();
-        ResultSet resultSet= stmt.executeQuery(query);
-        T result=handler.handle(resultSet);
-        resultSet.close();
-        stmt.close();
-        conn.close();
-        return result;
+        try(Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
+            Statement stmt=conn.createStatement()) {
+            try(ResultSet resultSet= stmt.executeQuery(query)) {
+                return handler.handle(resultSet);
+            }
+        }
     }
     private interface ResultHandler<T> {
         T handle(ResultSet resultSet) throws SQLException;
